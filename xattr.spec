@@ -16,6 +16,8 @@ Requires: xattr-python3 = %{version}-%{release}
 Requires: cffi
 BuildRequires : buildreq-distutils3
 BuildRequires : cffi
+BuildRequires : pep517
+BuildRequires : python-build
 BuildRequires : setuptools-python
 
 %description
@@ -62,7 +64,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618902988
+export SOURCE_DATE_EPOCH=1620533856
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -72,8 +74,13 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=16 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=16 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=16 "
 export MAKEFLAGS=%{?_smp_mflags}
+if [ ! -f setup.py ]; then
+printf "#!/usr/bin/env python\nfrom setuptools import setup\nsetup()" > setup.py
+chmod +x setup.py
 python3 setup.py build
-
+else
+python3 setup.py build
+fi
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}

@@ -4,7 +4,7 @@
 #
 Name     : xattr
 Version  : 0.9.8
-Release  : 401
+Release  : 402
 URL      : file:///aot/build/clearlinux/packages/xattr/xattr-v0.9.8.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/xattr/xattr-v0.9.8.tar.gz
 Summary  : No detailed summary available
@@ -58,7 +58,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638357571
+export SOURCE_DATE_EPOCH=1639122805
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
